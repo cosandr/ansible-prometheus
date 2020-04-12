@@ -20,6 +20,7 @@
   become: true
   tags:
     - prometheus_install
+  when: prometheus_skip_install != true
 
 - include: configure.yml
   become: true
