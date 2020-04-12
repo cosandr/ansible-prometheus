@@ -34,6 +34,14 @@
     - "{{ prometheus_config_dir }}/rules"
     - "{{ prometheus_config_dir }}/file_sd"
 
+- name: create prometheus TLS directory
+  file:
+    path: "{{ prometheus_config_dir }}/tls"
+    state: directory
+    owner: root
+    group: prometheus
+    mode: 0750
+
 - block:
     - name: download prometheus binary to local folder
       become: false

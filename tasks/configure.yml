@@ -58,3 +58,16 @@
     group: prometheus
     mode: 0640
   with_fileglob: "{{ prometheus_static_targets_files }}"
+
+- name: copy TLS files
+  copy:
+    src: ".secrets/{{ item }}"
+    dest: "{{ prometheus_config_dir }}/tls/{{ item }}"
+    force: true
+    owner: root
+    group: prometheus
+    mode: 0640
+  with_items:
+    - "{{ tls_ca_file }}"
+    - "{{ tls_crt_file }}"
+    - "{{ tls_key_file }}"
