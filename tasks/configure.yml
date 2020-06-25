@@ -61,7 +61,7 @@
 
 - name: copy TLS files
   copy:
-    src: ".secrets/{{ item }}"
+    src: "files/{{ item }}"
     dest: "{{ prometheus_config_dir }}/tls/{{ item }}"
     force: true
     owner: root
