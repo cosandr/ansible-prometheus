@@ -1,7 +1,65 @@
 # Change Log
 
-## [**Next release**](https://galaxy.ansible.com/cloudalchemy/prometheus)
+## [2.16.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-11-04)
+**Merged pull requests:**
 
+- Wait for local file systems before starting prometheus [\#317](https://github.com/cloudalchemy/ansible-prometheus/pull/317) ([bartoszcisek](https://github.com/bartoszcisek))
+
+## [2.16.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-10-20)
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! [\#316](https://github.com/cloudalchemy/ansible-prometheus/pull/316) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
+## [2.16.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-09-28)
+**Implemented enhancements:**
+
+- offline support [\#296](https://github.com/cloudalchemy/ansible-prometheus/issues/296)
+
+**Fixed bugs:**
+
+- prometheus\_scrape\_configs changes line order [\#310](https://github.com/cloudalchemy/ansible-prometheus/issues/310)
+- conf.d folder is provided, but there is no mechanism for using it [\#283](https://github.com/cloudalchemy/ansible-prometheus/issues/283)
+
+**Closed issues:**
+
+- You need to install \"jmespath\" prior to running json\_query filter [\#314](https://github.com/cloudalchemy/ansible-prometheus/issues/314)
+
+**Merged pull requests:**
+
+- Bump version [\#315](https://github.com/cloudalchemy/ansible-prometheus/pull/315) ([SuperQ](https://github.com/SuperQ))
+- \[REPO SYNC\] add troubleshooting doc skeleton [\#309](https://github.com/cloudalchemy/ansible-prometheus/pull/309) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- New prometheus/prometheus upstream release! [\#303](https://github.com/cloudalchemy/ansible-prometheus/pull/303) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- Do not create unused directory conf.d [\#299](https://github.com/cloudalchemy/ansible-prometheus/pull/299) ([paulfantom](https://github.com/paulfantom))
+- New prometheus/prometheus upstream release! [\#298](https://github.com/cloudalchemy/ansible-prometheus/pull/298) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
+## [2.15.5](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-06-09)
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! [\#293](https://github.com/cloudalchemy/ansible-prometheus/pull/293) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- \[REPO SYNC\] Add passlib as a test requirement [\#292](https://github.com/cloudalchemy/ansible-prometheus/pull/292) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
+## [2.15.4](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-05-09)
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! [\#290](https://github.com/cloudalchemy/ansible-prometheus/pull/290) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
+## [2.15.3](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-05-07)
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! [\#289](https://github.com/cloudalchemy/ansible-prometheus/pull/289) ([cloudalchemybot](https://github.com/cloudalchemybot))
+- improve path\_prefix example in defaults [\#266](https://github.com/cloudalchemy/ansible-prometheus/pull/266) ([zxyz](https://github.com/zxyz))
+
+## [2.15.2](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-20)
+**Merged pull requests:**
+
+- New prometheus/prometheus upstream release! [\#284](https://github.com/cloudalchemy/ansible-prometheus/pull/284) ([cloudalchemybot](https://github.com/cloudalchemybot))
+
+## [2.15.1](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-14)
+**Merged pull requests:**
+
+- Fix version\_compare filter deprecation [\#282](https://github.com/cloudalchemy/ansible-prometheus/pull/282) ([ecksun](https://github.com/ecksun))
+
+## [2.15.0](https://galaxy.ansible.com/cloudalchemy/prometheus) (2020-04-12)
 **Fixed bugs:**
 
 - Readme variable prometheus\_binaries\_local\_dir [\#279](https://github.com/cloudalchemy/ansible-prometheus/issues/279)
