@@ -20,7 +20,9 @@
   become: true
   tags:
     - prometheus_install
-  when: prometheus_skip_install != true
+  when:
+    - not prometheus_skip_install
+    - "'skip_install' not in ansible_run_tags"
 
 - include: configure.yml
   become: true

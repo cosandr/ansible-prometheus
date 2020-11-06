@@ -94,6 +94,7 @@
   when:
     - prometheus_binary_local_dir | length == 0
     - not prometheus_skip_install
+    - "'skip_install' not in ansible_run_tags"
 
 - name: propagate locally distributed prometheus and promtool binaries
   copy:
@@ -108,6 +109,7 @@
   when:
     - prometheus_binary_local_dir | length > 0
     - not prometheus_skip_install
+    - "'skip_install' not in ansible_run_tags"
   notify:
     - restart prometheus
 
