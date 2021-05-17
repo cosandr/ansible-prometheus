@@ -67,12 +67,3 @@
     group: prometheus
     mode: 0640
   with_fileglob: "{{ prometheus_static_targets_files }}"
-
-- name: copy CloudFlare Origin CA file
-  copy:
-    src: "files/{{ tls_ca_file }}"
-    dest: "{{ prometheus_config_dir }}/tls/{{ tls_ca_file }}"
-    force: true
-    owner: root
-    group: prometheus
-    mode: 0640
