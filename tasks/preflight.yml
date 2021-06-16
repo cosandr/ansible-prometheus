@@ -96,7 +96,7 @@
     - prometheus_version == "latest"
     - prometheus_binary_local_dir | length == 0
     - not prometheus_skip_install
-    - "'skip_install' not in ansible_run_tags"
+  tags: ["install"]
 
 - block:
     - name: "Get checksum list"
@@ -115,4 +115,4 @@
   when:
     - prometheus_binary_local_dir | length == 0
     - not prometheus_skip_install
-    - "'skip_install' not in ansible_run_tags"
+  tags: ["install"]

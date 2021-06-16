@@ -18,16 +18,13 @@
 
 - include: install.yml
   become: true
-  tags:
-    - prometheus_install
   when:
     - not prometheus_skip_install
-    - "'skip_install' not in ansible_run_tags"
+  tags: ["install"]
 
 - include: configure.yml
   become: true
-  tags:
-    - prometheus_configure
+  tags: ["configure"]
 
 - name: ensure prometheus service is started and enabled
   become: true
@@ -36,5 +33,3 @@
     name: prometheus
     state: started
     enabled: true
-  tags:
-    - prometheus_run
