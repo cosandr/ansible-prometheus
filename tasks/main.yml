@@ -11,24 +11,21 @@
     - prometheus_install
     - prometheus_run
 
-- include: preflight.yml
+- include_tasks: preflight.yml
   tags:
     - prometheus_configure
     - prometheus_install
     - prometheus_run
 
-- include: install.yml
-  become: true
+- include_tasks: install.yml
   when:
     - not prometheus_skip_install
   tags: ["install"]
 
-- include: configure.yml
-  become: true
+- include_tasks: configure.yml
   tags: ["configure"]
 
 - name: ensure prometheus service is started and enabled
-  become: true
   systemd:
     daemon_reload: true
     name: prometheus
