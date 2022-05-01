@@ -48,7 +48,7 @@
       get_url:
         url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
         dest: "/tmp/prometheus-{{ prometheus_version }}.linux-{{ go_arch }}.tar.gz"
-        checksum: "sha256:{{ __prometheus_checksum }}"
+        checksum: "sha256:{{ (__prometheus_checksums | select('search', 'linux-' + go_arch + '.tar.gz') | first).split()[0] }}"
       register: _download_archive
       until: _download_archive is succeeded
       retries: 5
