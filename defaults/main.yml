@@ -1,6 +1,7 @@
 ---
 prometheus_version: 2.27.0
 prometheus_binary_local_dir: ''
+prometheus_alert_rules_sync: true
 prometheus_skip_install: false
 
 prometheus_config_dir: /etc/prometheus

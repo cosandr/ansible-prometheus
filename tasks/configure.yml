@@ -1,4 +1,13 @@
 ---
+
+- name: Register previously copied alert rules
+  ansible.builtin.find:
+    paths: "{{ prometheus_config_dir }}/rules"
+    patterns:
+      - "*.rules"
+  register: __prometheus_present
+  when: prometheus_alert_rules_sync
+
 - name: alerting rules file
   template:
     src: "alert.rules.j2"
@@ -15,14 +24,34 @@
 - name: copy custom alerting rule files
   copy:
     src: "{{ item }}"
-    dest: "{{ prometheus_config_dir }}/rules/"
+    dest: "{{ prometheus_config_dir }}/rules/{{ item | basename }}"
     owner: root
     group: prometheus
     mode: 0640
     validate: "{{ _prometheus_binary_install_dir }}/promtool check rules %s"
   with_fileglob: "{{ prometheus_alert_rules_files }}"
+  register: __prometheus_copied
   notify:
     - reload prometheus
+
+- name: Set list facts
+  ansible.builtin.set_fact:
+    __prometheus_present_list: "{{ __prometheus_present | json_query('files[*].path') | default([]) }}"
+    __prometheus_copied_list: "{{ __prometheus_copied_tmp + __prometheus_copied_tmp_check + __prometheus_copied_ansible }}"
+  vars:
+    __prometheus_copied_tmp: "{{ __prometheus_copied.results | json_query('[*].dest') | default([]) }}"
+    __prometheus_copied_tmp_check: "{{ __prometheus_copied.results | json_query('[*].invocation.dest') | default([]) }}"
+    __prometheus_copied_ansible: "{{ [prometheus_config_dir + '/rules/ansible_managed.rules'] if prometheus_alert_rules else [] }}"
+  when: prometheus_alert_rules_sync
+
+- name: Remove alert rules not present on deployer machine
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: absent
+  loop: "{{ __prometheus_present_list | difference(__prometheus_copied_list) }}"
+  notify:
+    - reload prometheus
+  when: prometheus_alert_rules_sync
 
 - name: configure prometheus
   template:
