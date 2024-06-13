@@ -5,6 +5,10 @@ Description=Prometheus
 After=network-online.target
 Requires=local-fs.target
 After=local-fs.target
+{% if prometheus_required_services %}
+After={{ prometheus_required_services | join(' ') }}
+Requires={{ prometheus_required_services | join(' ') }}
+{% endif %}
 
 [Service]
 Type=simple
