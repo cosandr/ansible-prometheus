@@ -91,6 +91,7 @@
         - consoles
       notify:
         - restart prometheus
+      when: prometheus_version is version('3.0', '<')
   when:
     - prometheus_binary_local_dir | length == 0
     - not prometheus_skip_install
